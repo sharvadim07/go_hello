@@ -16,11 +16,15 @@ func Hello(name string) (string, error) {
 }
 
 func init() {
-	rand.Seed(time.Now().UnixNano())
+	rand.NewSource(time.Now().UnixNano())
 }
 
 func randomFormat() string {
 	formats := []string{
-		"Hi, %v"
+		"Hi, %v",
+		"Great, to see you, %v",
+		"Hail, %v Well met!",
 	}
+
+	return formats[rand.Intn(len(formats))]
 }
